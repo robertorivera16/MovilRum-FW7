@@ -13,3 +13,14 @@ var mainView = myApp.addView('.view-main', {
     // Enable Dom Cache so we can use all inline pages
     domCache: true
 });
+
+$$('.confirm-title-ok-cancel').on('click', function () {
+    myApp.confirm('Are you sure?', 'Call ', 
+      function () {
+        myApp.alert('You clicked Ok button');
+      },
+      function () {
+        myApp.alert('You clicked Cancel button');
+      }
+    );
+});

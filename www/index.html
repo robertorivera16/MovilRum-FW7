@@ -5,30 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>My App</title>
+    <title>Watch Dog</title>
     <!-- Path to Framework7 Library CSS-->
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/my-app.css">
+      <link rel="stylesheet" href="css/framework7-icons.css">
+
   </head>
+    
   <body class="theme-red">
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
-    <!-- Panels overlay-->
-    <div class="panel-overlay"></div>
-    <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal">
-      <div class="content-block">
-        <p>Left panel content goes here</p>
-      </div>
-    </div>
-    <!-- Right panel with cover effect-->
-    <div class="panel panel-right panel-cover">
-      <div class="content-block">
-        <p>Right panel content goes here</p>
-      </div>
-    </div>
     <!-- Views-->
     <div class="views">
       <!-- Your main view, should have "view-main" class-->
@@ -41,7 +30,7 @@
               <div class="left">
               <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
             </div>
-            <div class="center sliding">Awesome Ap</div>
+            <div class="center sliding">Campus Watch Dog</div>
             
           </div>
           <!-- Navbar inner for About page-->
@@ -62,7 +51,59 @@
         </div>
         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
         <div class="pages navbar-through toolbar-through">
-          <!-- Index Page-->
+        
+    
+  <!-- Should be a direct child of BODY -->
+  <div class="login-screen modal-in">
+      <!-- Default view-page layout -->
+      <div class="view">
+        <div class="page">
+          <!-- page-content has additional login-screen content -->
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Campus Watch Dog</div>
+            <!-- Login form -->
+            <form>
+              <div class="list-block">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Username</div>
+                      <div class="item-input">
+                        <input type="text" name="username" placeholder="Username">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Password</div>
+                      <div class="item-input">
+                        <input type="password" name="password" placeholder="Password">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+                <br></br><br></br>
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <a href="#" class="item-link list-button close-login-screen">Sign In</a>
+                  </li>
+                    <li>
+                        <a href="#" class="item-link list-button confirm-title-ok-cancel">Forgot Password?</a>
+                        <div class="list-block-label">Some text with login information.</div>
+                    </li>
+             
+                </ul> 
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>        
+            
+            
+            <!-- Index Page-->
           <div data-page="index" class="page">
             <div class="backgroundimg"></div>
             <!-- Scrollable page content-->
