@@ -14,6 +14,7 @@ var mainView = myApp.addView('.view-main', {
     domCache: true
 });
 
+
 $$('.confirm-title-ok-cancel').on('click', 
 function () 
     {
@@ -26,5 +27,6 @@ function ()
             {
                 myApp.alert('You clicked Cancel button');
             }
+
     );
 });
