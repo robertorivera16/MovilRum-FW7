@@ -1,6 +1,6 @@
 // Initialize your app
 var myApp = new Framework7({
-    animateNavBackIcon:true
+    animateNavBackIcon:true, modalTitle:"Watch Dog"
 });
 
 // Export selectors engine
@@ -14,8 +14,10 @@ var mainView = myApp.addView('.view-main', {
     domCache: true
 });
 
-$$('.confirm-title-ok-cancel').on('click', function () {
-    myApp.confirm('Are you sure?', 'Call Administration', 
+$$('.confirm-title-ok-cancel').on('click', 
+function () 
+    {
+        myApp.confirm('Call Administration?', 'Watch Dog', 
       function () 
             {
                 myApp.alert('You will be transfered');
