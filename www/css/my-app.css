@@ -9,6 +9,7 @@
     position: absolute; /* this is most important! */ 
     -webkit-filter: blur(2px); /* To blur the image */ 
 }
+
 .list-block ul { background: rgba(255, 255, 255, 0.7) }
 i.tabbar-demo-icon-1 {
     width: 30px;
