@@ -17,6 +17,9 @@ var mainView = myApp.addView('.view-main', {
 $$('.confirm-title-ok-cancel').on('click', function () {
     myApp.confirm('Are you sure?', 'Call ', 
       function () {
+        
+        
+        
         myApp.alert('You clicked Ok button');
       },
       function () {
