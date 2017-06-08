@@ -15,12 +15,14 @@ var mainView = myApp.addView('.view-main', {
 });
 
 $$('.confirm-title-ok-cancel').on('click', function () {
-    myApp.confirm('Are you sure?', 'Call ', 
-      function () {
-        myApp.alert('You clicked Ok button');
-      },
-      function () {
-        myApp.alert('You clicked Cancel button');
-      }
+    myApp.confirm('Are you sure?', 'Call Administration', 
+      function () 
+            {
+                myApp.alert('You will be transfered');
+            },
+      function () 
+            {
+                myApp.alert('You clicked Cancel button');
+            }
     );
 });
