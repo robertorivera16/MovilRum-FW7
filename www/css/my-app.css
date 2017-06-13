@@ -1,5 +1,33 @@
 /* Your app custom files in this file */
 /* Tab bar icons */
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form{
+    margin-right: 10vmin;
+    margin-left: 10vmin;
+}
+.forgot-ps{
+    width: 40%;
+}
+
+.input-fields{
+    padding-bottom: 4px;
+}
+.logo-container{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.logo-container img{
+    width: 50%;
+}
+
+.title{
+    font-family: 'Graduate', cursive;
+}
 
 .backgroundimg { 
     height: 100%; /* To fill everything */ 
