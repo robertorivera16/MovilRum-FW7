@@ -15,18 +15,27 @@ var mainView = myApp.addView('.view-main', {
 });
 
 
-$$('.confirm-title-ok-cancel').on('click', 
-function () 
-    {
-        myApp.confirm('Call Administration?', 'Watch Dog', 
-      function () 
-            {
-                myApp.alert('You will be transfered');
-            },
-      function () 
-            {
-                myApp.alert('You clicked Cancel button');
+//- With callbacks on click
+$$('.ac-5').on('click', function () {
+    var buttons = [
+        
+        //Call Button
+        {
+            text:'Visite nuestro help desk en Monzon 107 o llame nuestra línea de ayuda al 787-832-4040 ext 3331.',
+            label:true
+        },
+        {
+            text: 'Call Administration',
+            onClick: function () {
+                myApp.alert('Your call is being transferred');
             }
-
-    );
-});
+        },
+        
+        //Cancel Button
+        {
+            text: 'Cancel',
+            color: 'red',
+        }
+    ];
+    myApp.actions(buttons);
+}); 
