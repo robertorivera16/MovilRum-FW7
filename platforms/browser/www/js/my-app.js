@@ -1,6 +1,6 @@
 // Initialize your app
 var myApp = new Framework7({
-    animateNavBackIcon:true
+    animateNavBackIcon:true, modalTitle:"Watch Dog"
 });
 
 // Export selectors engine
@@ -13,3 +13,38 @@ var mainView = myApp.addView('.view-main', {
     // Enable Dom Cache so we can use all inline pages
     domCache: true
 });
+
+
+//- With callbacks on click
+$$('.forgot-ps').on('click', function () {
+    var buttons = [
+
+        //Call Button
+        {
+            text:'Visite nuestro help desk en Monzon 107 o llame nuestra línea de ayuda al 787-832-4040 ext 3331.',
+            label:true
+        },
+        {
+            text: 'Call Administration',
+            onClick: function () {
+                phonedialer.dial(
+                    "7878324040, 3331", 
+                    function(err) {
+                        if (err == "empty") alert("Unknown phone number");
+                        else alert("Dialer Error:" + err);    
+                    },
+                    function(success) { alert('Dialing succeeded'); }
+                );
+                myApp.alert('Your call is being transferred');
+
+            }
+        },
+
+        //Cancel Button
+        {
+            text: 'Cancel',
+            color: 'red',
+        }
+    ];
+    myApp.actions(buttons);
+}); 
