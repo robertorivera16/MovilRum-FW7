@@ -9,9 +9,6 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "com.teamnemitoff.phonedialer": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {}
