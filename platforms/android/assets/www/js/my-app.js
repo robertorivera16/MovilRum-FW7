@@ -27,15 +27,8 @@ $$('.forgot-ps').on('click', function () {
         {
             text: 'Call Administration',
             onClick: function () {
-                phonedialer.dial(
-                    "7878324040, 3331", 
-                    function(err) {
-                        if (err == "empty") alert("Unknown phone number");
-                        else alert("Dialer Error:" + err);    
-                    },
-                    function(success) { alert('Dialing succeeded'); }
-                );
                 myApp.alert('Your call is being transferred');
+                window.open('tel:787832');
 
             }
         },

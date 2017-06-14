@@ -6,13 +6,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "com.teamnemitoff.phonedialer": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-phonedialer"
-        },
-        "is_top_level": true,
-        "variables": {}
     }
 }
