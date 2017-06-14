@@ -26,8 +26,7 @@
                 <div class="page">
                     <!-- page-content has additional login-screen content -->
                     <div class="page-content login-screen-content bg-green">
-                        <div class="login-screen-title color-white title">Campus Watch Dog
-                        </div>
+                        <div class="login-screen-title color-white title">Campus Watch Dog</div>
                         <!-- Login form -->
                         <form class="form">
                             <div class="list-block input-fields">
@@ -68,8 +67,6 @@
                 </div>
             </div>
         </div>  
-        <!-- Status bar overlay for fullscreen mode-->
-        <div class="statusbar-overlay"></div>
         <!-- Views-->
         <div class="views">
             <!-- Your main view, should have "view-main" class-->
@@ -83,7 +80,11 @@
                             <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
                         </div>
                         <div class="center sliding">Campus Watch Dog</div>
-
+                    </div>
+                    <!-- Navbar inner for Settings page-->
+                    <div data-page="setting" class="navbar-inner cached">
+                        <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+                        <div class="center sliding">Settings</div>
                     </div>
                     <!-- Navbar inner for About page-->
                     <div data-page="about" class="navbar-inner cached">
@@ -110,21 +111,23 @@
                         <div class="backgroundimg"></div>
                         <!-- Scrollable page content-->
                         <div class="page-content">
-                            <div class="content-block-title">Welcome To My Awesome App</div>
                             <div class="content-block">
                                 <div class="content-block-inner">
-                                    <form action="index.html" method="get">
-                                        <p>
-                                            <input type="image" align="middle" src="/img/RedButton.png" onclick="alert('Don\'t forget to press the back button to return!')" width="350" height="350"/>
-                                        </p>
-                                    </form>
-                                    <p>Couple of worlds here because my app is so awesome!</p>
-                                    <p>Duis sed erat ac eros ultrices pharetra id ut tellus. Praesent rhoncus enim ornare ipsum aliquet ultricies. Pellentesque sodales erat quis elementum sagittis.</p>
+                                    <!--HELP BUTTON-->
+                                    <div class="round-button"><div class="round-button-circle"><a href="http://example.com" class="round-button">Button!!</a></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="content-block-title">What about simple navigation?</div>
+                            </div>                              
+                        <!--Settings link-->
                             <div class="list-block">
                                 <ul>
+                                   <li><a href="#setting" class="item-link">
+                                        <div class="item-content">
+                                            <div class="item-inner"> 
+                                                <div class="item-title">Settings</div>
+                                            </div>
+                                        </div></a></li>
+                                    <!--setttings--
                                     <li><a href="#about" class="item-link">
                                         <div class="item-content">
                                             <div class="item-inner"> 
@@ -142,10 +145,10 @@
                                             <div class="item-inner">
                                                 <div class="item-title">Form</div>
                                             </div>
-                                        </div></a></li>
+                                        </div></a></li> 
+                                    -->
                                 </ul>
                             </div>
-
                         </div>
                     </div>
 
@@ -364,10 +367,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Bottom Toolbar-->
-                <div class="toolbar">
-                    <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
                 </div>
             </div>
         </div>
