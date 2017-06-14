@@ -33,9 +33,6 @@
   text-decoration:none;
 }
 
-
-
-
 /* Your app custom files in this file */
 /* Tab bar icons */
 .center{
@@ -48,7 +45,11 @@
     margin-left: 10vmin;
 }
 .forgot-ps{
-    width: 40%;
+    width: 70%;
+}
+
+.sign-in{
+    width: 90%;
 }
 
 .input-fields{
@@ -56,16 +57,24 @@
 }
 .logo-container{
     text-align: center;
-    padding-bottom: 20px;
 }
 
 .logo-container img{
-    width: 50%;
+    width: 35%;
 }
 
 .title{
     font-family: 'Graduate', cursive;
 }
+
+.input-i{
+    padding-right: 25px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #f7f1ee;
+}
+
 
 .backgroundimg { 
     height: 100%; /* To fill everything */ 
