@@ -28,7 +28,7 @@ $$('.forgot-ps').on('click', function () {
             text: 'Call Administration',
             onClick: function () {
                 myApp.alert('Your call is being transferred');
-                window.open('tel:787832');
+                window.open('tel:7878324040;3331', '_system');
 
             }
         },
@@ -41,3 +41,29 @@ $$('.forgot-ps').on('click', function () {
     ];
     myApp.actions(buttons);
 }); 
+
+var timer = new Timer({
+    tick : 1,
+    ontick : function (sec) {
+        console.log('interval', sec);
+        document.getElementsByClassName("timer_text").innerHTML = sec;
+        
+    },
+    onstart : function() {
+        console.log('timer started');
+        document.getElementsByClassName("timer_text").innerHTML = "started";
+
+    }
+});
+
+// defining options using on
+timer.on('end', function () {
+    console.log('timer ended');
+    this.start(4).off('end');
+});
+
+document.getElementById("timer").addEventListener("click", startTimer);
+
+function startTimer() {
+    timer.start(10);
+}
