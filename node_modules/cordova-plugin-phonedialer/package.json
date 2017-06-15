@@ -1,0 +1,55 @@
+{
+  "name": "cordova-plugin-phonedialer",
+  "version": "0.3.1",
+  "description": "Dials Phone without extra confirmation pop-up",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peutetre/PhoneGap-PhoneDialer.git"
+  },
+  "author": "",
+  "cordova": {
+    "id": "cordova-plugin-hockeyapp",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/peutetre/PhoneGap-PhoneDialer/issues"
+  },
+  "homepage": "https://github.com/peutetre/PhoneGap-PhoneDialer#readme",
+  "gitHead": "73befcbcdc79261151e11b51153723b2a4607b20",
+  "_id": "cordova-plugin-phonedialer@0.3.1",
+  "scripts": {},
+  "_shasum": "19bdea86d1b6cc6b0ad428eaf4df280e6f9aa16a",
+  "_from": "cordova-plugin-phonedialer@latest",
+  "_npmVersion": "3.8.3",
+  "_nodeVersion": "5.10.0",
+  "_npmUser": {
+    "name": "42loops",
+    "email": "paul@42loops.com"
+  },
+  "maintainers": [
+    {
+      "name": "42loops",
+      "email": "paul@42loops.com"
+    }
+  ],
+  "dist": {
+    "shasum": "19bdea86d1b6cc6b0ad428eaf4df280e6f9aa16a",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-phonedialer/-/cordova-plugin-phonedialer-0.3.1.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-phonedialer-0.3.1.tgz_1459859863680_0.07733506569638848"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-phonedialer/-/cordova-plugin-phonedialer-0.3.1.tgz"
+}
