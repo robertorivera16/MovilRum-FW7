@@ -28,7 +28,7 @@ $$('.forgot-ps').on('click', function () {
             text: 'Call Administration',
             onClick: function () {
                 myApp.alert('Your call is being transferred');
-                window.open('tel:787832');
+                window.open('tel:7878324040;3331');
 
             }
         },
