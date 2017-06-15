@@ -36,7 +36,7 @@
                                     <li class="item-content">
                                         <div class="item-inner">
                                             <div class="input-i"><i class="f7-icons size-25 color-white">person</i></div>
-                                            <div class="item-input center">
+                                            <div class="item-input">
                                                 <input style="color: white; text-decoration: underline" type="text" name="username" placeholder="E-Mail @upr.edu">
                                             </div>
                                         </div>
@@ -44,7 +44,7 @@
                                     <li class="item-content">
                                         <div class="item-inner">
                                             <div class="input-i"><i class="f7-icons size-25 color-white">lock</i></div>
-                                            <div class="item-input color-white">
+                                            <div class="item-input">
                                                 <input style="color: white; text-decoration: underline" type="password" name="password" placeholder="Password">
                                             </div>
                                         </div>
@@ -114,9 +114,17 @@
                             <div class="content-block">
                                 <div class="content-block-inner">
                                     <!--HELP BUTTON-->
-                                    <div class="round-button">
+                                    <div class="round-button center">
                                         <div class="round-button-circle">
-                                            <a href="#" class="round-button">Button!!</a>
+                                            
+                                              <button id="timer" class="button button-big vertical-center color-white">
+                                                <div id="clockdiv">
+                                                  <div>
+                                                    <span class="seconds"></span>
+                                                    <div class="smalltext">Seconds</div>
+                                                  </div>
+                                                </div>
+                                                </button>
                                         </div>
                                     </div>
                                 </div>
@@ -124,12 +132,15 @@
                             <!--Settings link-->
                             <div class="list-block">
                                 <ul>
-                                    <li><a href="#setting" class="item-link">
+                                    <li>
+                                        <a href="#setting" class="item-link">
                                         <div class="item-content">
                                             <div class="item-inner"> 
-                                                <div class="item-title">Settings</div>
+                                                <div class="item-title center">Settings</div>
                                             </div>
-                                        </div></a></li>
+                                        </div>
+                                        </a>
+                                    </li>
                                     <!--setttings--
 <li><a href="#about" class="item-link">
 <div class="item-content">
@@ -377,5 +388,7 @@
         <script type="text/javascript" src="js/framework7.min.js"></script>
         <!-- Path to your app js-->
         <script type="text/javascript" src="js/my-app.js"></script>
+        <!-- Path to your timer js-->
+        <script type="text/javascript" src="js/timer.js"></script>
     </body>
 </html>
