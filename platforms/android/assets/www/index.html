@@ -28,15 +28,15 @@
                     <div class="page-content login-screen-content bg-green">
                         <div class="login-screen-title color-white title">Campus Watch Dog</div>
                         <!-- Login form -->
-                         <div class="logo-container"><img src="img/logo_rum.png">
-                                    </div>
+                        <div class="logo-container"><img src="img/logo_rum.png">
+                        </div>
                         <form class="form">
                             <div class="list-block input-fields">
                                 <ul>
                                     <li class="item-content">
                                         <div class="item-inner">
                                             <div class="input-i"><i class="f7-icons size-25 color-white">person</i></div>
-                                            <div class="item-input center">
+                                            <div class="item-input">
                                                 <input style="color: white; text-decoration: underline" type="text" name="username" placeholder="E-Mail @upr.edu">
                                             </div>
                                         </div>
@@ -44,7 +44,7 @@
                                     <li class="item-content">
                                         <div class="item-inner">
                                             <div class="input-i"><i class="f7-icons size-25 color-white">lock</i></div>
-                                            <div class="item-input color-white">
+                                            <div class="item-input">
                                                 <input style="color: white; text-decoration: underline" type="password" name="password" placeholder="Password">
                                             </div>
                                         </div>
@@ -114,9 +114,13 @@
                             <div class="content-block">
                                 <div class="content-block-inner">
                                     <!--HELP BUTTON-->
-                                    <div class="round-button">
-                                        <div class="round-button-circle">
-                                            <a href="#" class="round-button">Button!!</a>
+                                    <div class="round-button center">
+                                        <div id="timer" class="round-button-circle">
+                                            <a class="vertical-center color-white">
+                                                <div>
+                                                    <div class="timer_text">Hola</div>
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -124,12 +128,15 @@
                             <!--Settings link-->
                             <div class="list-block">
                                 <ul>
-                                    <li><a href="#setting" class="item-link">
-                                        <div class="item-content">
-                                            <div class="item-inner"> 
-                                                <div class="item-title">Settings</div>
+                                    <li>
+                                        <a href="#setting" class="item-link">
+                                            <div class="item-content">
+                                                <div class="item-inner"> 
+                                                    <div class="item-title center">Settings</div>
+                                                </div>
                                             </div>
-                                        </div></a></li>
+                                        </a>
+                                    </li>
                                     <!--setttings--
 <li><a href="#about" class="item-link">
 <div class="item-content">
@@ -375,7 +382,10 @@
         </div>
         <!-- Path to Framework7 Library JS-->
         <script type="text/javascript" src="js/framework7.min.js"></script>
+        <!-- Path to your timer js-->
+        <script type="text/javascript" src="js/timer.js"></script>
         <!-- Path to your app js-->
         <script type="text/javascript" src="js/my-app.js"></script>
+        
     </body>
 </html>
