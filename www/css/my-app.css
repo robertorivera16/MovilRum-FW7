@@ -1,7 +1,7 @@
 /*Help Button!*/
 .round-button {
-  width:50%;
-    
+    width:50%;
+
 }
 .round-button-circle {
   width: 100%;
@@ -12,27 +12,26 @@
   overflow:hidden;
   background: red; 
   box-shadow: 0 0 3px red;
-    
-   
 }
+
 .round-button a {
-  display:block;
-  float:left;
-  width:100%;
-  padding-top:50%;
-  padding-bottom:50%;
-  line-height:1em;
-  margin-top:-0.5em;
-        
-  text-align:center;
-  color:#e2eaf3;
-  font-family:Verdana;
-  font-size:1.2em;
-  font-weight:bold;
-  text-decoration:none;
+    display:block;
+    float:left;
+    width:100%;
+    padding-top:50%;
+    padding-bottom:50%;
+    line-height:1em;
+    margin-top:-0.5em;
+
+    text-align:center;
+    color:#e2eaf3;
+    font-family:Verdana;
+    font-size:1.2em;
+    font-weight:bold;
+    text-decoration:none;
 }
 .round-button-circle:active {
-  background-color: #cf2b18;
+    background-color: #cf2b18;
 }
 
 #clockdiv > div{
