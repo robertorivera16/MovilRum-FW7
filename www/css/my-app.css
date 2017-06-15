@@ -47,16 +47,6 @@
     margin-right: auto;
 }
 
- .vertical-center
-    {
-        position: absolute;
-        top: 41%;
-        left: 42%;
-        width: 40
-
-    }
-
-
 .form{
     margin-right: 10vmin;
     margin-left: 10vmin;
