@@ -4,10 +4,10 @@
     <description>
         Campus Watch Dog - Emergency Notification App Prototype
     </description>
-    <author email="roberto.rivera16@upr.edu" href="#">
+    <author email="roberto.rivera16@upr.edu">
         Roberto C. Rivera Reyes
     </author>
-    <author email="bryan.santiago6@upr.edu" href="#">
+    <author email="bryan.santiago6@upr.edu">
         Bryan Santiago Rodriguez
     </author>
     <content src="index.html" />
@@ -25,8 +25,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="~6.2.3" />
-    <engine name="ios" spec="~4.4.0" />
+    <engine name="android" spec="^6.2.3" />
+    <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
-    
 </widget>
