@@ -45,13 +45,14 @@ $$('.forgot-ps').on('click', function () {
 var timer = new Timer({
     tick : 1,
     ontick : function (sec) {
-        console.log('interval', sec);
-        document.getElementsByClassName("timer_text").innerHTML = sec;
+        console.log('interval', Math.ceil(sec/1000));
+        $(".timer_text").html(Math.ceil(sec/1000));
         
     },
     onstart : function() {
         console.log('timer started');
-        document.getElementsByClassName("timer_text").innerHTML = "started";
+        $(".timer_text").html("10");
+    
 
     }
 });
@@ -59,7 +60,8 @@ var timer = new Timer({
 // defining options using on
 timer.on('end', function () {
     console.log('timer ended');
-    this.start(4).off('end');
+    $(".timer_text").html("END");
+
 });
 
 document.getElementById("timer").addEventListener("click", startTimer);
