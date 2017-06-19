@@ -42,6 +42,32 @@ $$('.forgot-ps').on('click', function () {
     myApp.actions(buttons);
 }); 
 
+
+
+//*****SAVE USER INFO*****//
+
+
+//$("#directory-btn").click(function(){
+//    var JSONService = 'http://beta.json-generator.com/api/json/get/EJz5aVtQM';
+//
+//    contactData.length().then(function(length){
+//      if (length === 0) {
+//        $.getJSON(JSONService, function(data) {
+//          alert("Contact Information Recieved");
+//        })
+//
+//        .done(function( data ) {
+//          $.each( data.contacts, function( i, item ) {
+//            contactData.setItem(item.name, item.phone);
+//          });
+//        });
+//      }else{
+//        alert("Data Fetched");
+//      }
+//    });
+//
+//  });
+
 var timer = new Timer({
     tick : 1,
     ontick : function (sec) {
