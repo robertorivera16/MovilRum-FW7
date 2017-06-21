@@ -18,11 +18,15 @@ var userData = localforage.createInstance({
     name: "User Data"
 });
 
-var gps = localforage.createInstance({
-    name: "GPS Coordinates"
+userData.getItem('allpass').then(function(value){
+    console.log(value)
+    if(value){
+        myApp.closeModal();
+    }
 });
 
-userData.clear();
+
+
 
 
 //- With callbacks on click
@@ -52,39 +56,18 @@ $$('.forgot-ps').on('click', function () {
     myApp.actions(buttons);
 }); 
 
-//$$('.submit-btn').on('click', function(){
-//    console.log("submit btn pressed");
-//    var formData = myApp.formToData('#login-form');
-//    var username = String(formData.username);
-//    var password = String(formData.password);
-//    
-//    var dataString = 'id='+ username + '&type=' + password;
-//    console.log("submit process...");
-//    $.ajax({
-//        url     : $(this).attr('http://appsvr.uprm.edu/bryan/connect.php'),
-//        type    : $(this).attr('POST'),
-//        data    : dataString,
-//        success : function( response ) {
-//            console.log(response);
-//        }
-//    });
-//
-//
-//
-//});
-
-
-
 //*****SAVE USER INFO*****//
 
 $$('.sign-in').on('click', function(){
     var formData = myApp.formToData('#login-form');
     var username = String(formData.username);
     var password = String(formData.password);
-    var JSONService = 'http://beta.json-generator.com/api/json/get/4yQynybmQ';
+    var JSONService = 'http://beta.json-generator.com/api/json/get/Vkilrnmm7';
     var found = false;
 
     myApp.showPreloader("Signing in");
+
+    $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" } );
 
 
     userData.length().then(function(length){
@@ -124,7 +107,23 @@ $$('.sign-in').on('click', function(){
         setTimeout(function () {
             myApp.hidePreloader();
             if(found){
-                myApp.closeModal();
+                myApp.closeModal('.login-screen');
+
+
+                //Keep me signed in QUESTION***
+                //
+                myApp.confirm('Are you sure?', 'Keep me signed in...', function () {
+                    userData.setItem('allpass', true).then(function(value){
+                        console.log(value);
+                    });
+                    myApp.alert('Userdata saved.');
+                }, function(){
+                    userData.setItem('allpass', false).then(function(value){
+                        console.log(value);
+                    });
+                    myApp.alert('Userdata not saved.');
+                });
+
             }else{
                 myApp.alert("E-mail or password incorrect. Try Again!");
 
@@ -133,9 +132,13 @@ $$('.sign-in').on('click', function(){
 
 
 
+
+
     });
 }); 
 
+//Get device location coordinates**
+//
 function getPosition() {
 
     var options = {
@@ -150,7 +153,7 @@ function getPosition() {
         //Use the data previously saved to show a web alert
         myApp.alert('Latitude: ' + position.coords.latitude + " Longitude: " + position.coords.longitude, "Your Location:");
 
-        
+
 
 
 
@@ -160,7 +163,8 @@ function getPosition() {
     }
 }
 
-
+//Timer**
+//
 var timer = new Timer({
     tick : 1,
     ontick : function (sec) {
@@ -171,7 +175,7 @@ var timer = new Timer({
     onstart : function() {
         console.log('timer started');
         $(".timer_text").html("3");
-        
+
 
 
     }
@@ -179,7 +183,7 @@ var timer = new Timer({
 
 // defining options using on
 timer.on('end', function () {
-    
+
     console.log('timer ended');
     $(".timer_text").html("SENT");
     getPosition();
