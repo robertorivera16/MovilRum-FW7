@@ -18,6 +18,10 @@ var userData = localforage.createInstance({
     name: "User Data"
 });
 
+var gps = localforage.createInstance({
+    name: "GPS Coordinates"
+});
+
 userData.clear();
 
 
@@ -132,6 +136,34 @@ $$('.sign-in').on('click', function(){
     });
 }); 
 
+function getPosition() {
+
+    var options = {
+        enableHighAccuracy: true,
+        maximumAge: 3600000
+    }
+
+    var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+
+    function onSuccess(position) {
+
+        //Store Latitude and Longitude coordinates from position in localForage instance gps previously created
+        gps.setItem("latitude", position.coords.latitude);
+        gps.setItem("longitude", position.coords.longitude);
+
+        //Use the data previously saved to show a web alert
+        myApp.alert('Latitude: ' + gps.getItem("latitude") + " Longitude: " + gps.getItem("longitude"), "Your Location:");
+
+        
+
+
+
+    };
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+    }
+}
+
 
 var timer = new Timer({
     tick : 1,
@@ -142,7 +174,8 @@ var timer = new Timer({
     },
     onstart : function() {
         console.log('timer started');
-        $(".timer_text").html("10");
+        $(".timer_text").html("3");
+        
 
 
     }
@@ -150,13 +183,15 @@ var timer = new Timer({
 
 // defining options using on
 timer.on('end', function () {
+    
     console.log('timer ended');
-    $(".timer_text").html("END");
+    $(".timer_text").html("SENT");
+    getPosition();
 
 });
 
 document.getElementById("timer").addEventListener("click", startTimer);
 
 function startTimer() {
-    timer.start(10);
+    timer.start(3);
 }

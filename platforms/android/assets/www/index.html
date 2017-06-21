@@ -30,7 +30,7 @@
                         <!-- Login form -->
                         <div class="logo-container"><img src="img/logo_rum.png">
                         </div>
-                        <form class="form">
+                        <form id="login-form" class="form" >
                             <div class="list-block input-fields">
                                 <ul>
                                     <li class="item-content">
@@ -54,14 +54,17 @@
                             <div class="list-block">
                                 <ul>
                                     <li>
-                                        <p class="color-white"><a href="#" class="center item-link button button-big close-login-screen color-white sign-in">Sign In</a></p>
+                                        <p class="color-white"><a href="#" class="center item-link button button-big color-white sign-in">Sign In</a></p>
+                                        
                                     </li>
                                     <li>
-                                        <p class="color-white"><a href="tel:787-832-4040" class="center item-link button color-white forgot-ps ac-5">Forgot Password?</a></p>
+                                        <p class="color-white"><a href="#" class="center item-link button color-white forgot-ps">Forgot Password?</a></p>
                                     </li>
+
 
                                 </ul> 
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -81,7 +84,7 @@
                         </div>
                         <div class="center sliding">Campus Watch Dog</div>
                     </div>
-                    
+
                 </div>
                 <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
                 <div class="pages navbar-through toolbar-through">
@@ -99,7 +102,7 @@
                                         <div id="timer" class="round-button-circle">
                                             <a class="vertical-center color-white">
                                                 <div>
-                                                    <div class="timer_text">Hola</div>
+                                                    <div class="timer_text">Send Emergency</div>
                                                 </div>
                                             </a>
                                         </div>
@@ -113,7 +116,7 @@
                 </div>
             </div>
         </div>
-
+        <script src="js/localForage.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Path to Framework7 Library JS-->
         <script type="text/javascript" src="js/framework7.min.js"></script>
