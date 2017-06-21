@@ -14,6 +14,16 @@ var mainView = myApp.addView('.view-main', {
     domCache: true
 });
 
+var userData = localforage.createInstance({
+    name: "User Data"
+});
+
+var gps = localforage.createInstance({
+    name: "GPS Coordinates"
+});
+
+userData.clear();
+
 
 //- With callbacks on click
 $$('.forgot-ps').on('click', function () {
@@ -42,30 +52,146 @@ $$('.forgot-ps').on('click', function () {
     myApp.actions(buttons);
 }); 
 
+//$$('.submit-btn').on('click', function(){
+//    console.log("submit btn pressed");
+//    var formData = myApp.formToData('#login-form');
+//    var username = String(formData.username);
+//    var password = String(formData.password);
+//    
+//    var dataString = 'id='+ username + '&type=' + password;
+//    console.log("submit process...");
+//    $.ajax({
+//        url     : $(this).attr('http://appsvr.uprm.edu/bryan/connect.php'),
+//        type    : $(this).attr('POST'),
+//        data    : dataString,
+//        success : function( response ) {
+//            console.log(response);
+//        }
+//    });
+//
+//
+//
+//});
+
+
+
+//*****SAVE USER INFO*****//
+
+$$('.sign-in').on('click', function(){
+    var formData = myApp.formToData('#login-form');
+    var username = String(formData.username);
+    var password = String(formData.password);
+    var JSONService = 'http://beta.json-generator.com/api/json/get/4yQynybmQ';
+    var found = false;
+
+    myApp.showPreloader("Signing in");
+
+
+    userData.length().then(function(length){
+        if (length === 0) {
+            $.getJSON(JSONService, function(data) {
+                console.log("Contact Information Recieved");
+            }).done(function(data) {
+                $.each( data.students, function( i, item ) {
+                    if(username == String(item.user) && password == String(item.pw)){
+                        userData.setItem(username, String(item.u_id)).then(function (value) {
+                            found = true;
+                            console.log("Succes--" + found);
+                            console.log(username + " saved with unique id: " + String(item.u_id));
+
+                        }).catch(function(err) {
+                            // This code runs if there were any errors
+                            console.log("Error-- save userinfo");
+                        });
+                    }
+                });
+
+            });
+        }else{
+            $.getJSON(JSONService, function(data) {
+                console.log("Contact Information Recieved");
+            }).done(function(data) {
+
+                $.each( data.students, function( i, item ) {
+                    if(username == String(item.user) && password == String(item.pw)){
+                        found = true;
+                    }
+                });
+
+            });
+        }
+
+        setTimeout(function () {
+            myApp.hidePreloader();
+            if(found){
+                myApp.closeModal();
+            }else{
+                myApp.alert("E-mail or password incorrect. Try Again!");
+
+            }
+        }, 2000);
+
+
+
+    });
+}); 
+
+function getPosition() {
+
+    var options = {
+        enableHighAccuracy: true,
+        maximumAge: 3600000
+    }
+
+    var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+
+    function onSuccess(position) {
+
+        //Store Latitude and Longitude coordinates from position in localForage instance gps previously created
+        gps.setItem("latitude", position.coords.latitude);
+        gps.setItem("longitude", position.coords.longitude);
+
+        //Use the data previously saved to show a web alert
+        myApp.alert('Latitude: ' + gps.getItem("latitude") + " Longitude: " + gps.getItem("longitude"), "Your Location:");
+
+        
+
+
+
+    };
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+    }
+}
+
+
 var timer = new Timer({
     tick : 1,
     ontick : function (sec) {
         console.log('interval', Math.ceil(sec/1000));
         $(".timer_text").html(Math.ceil(sec/1000));
-        
+
     },
     onstart : function() {
         console.log('timer started');
-        $(".timer_text").html("10");
-    
+        $(".timer_text").html("3");
+        
+
 
     }
 });
 
 // defining options using on
 timer.on('end', function () {
+    
     console.log('timer ended');
-    $(".timer_text").html("END");
+    $(".timer_text").html("SENT");
+    getPosition();
 
 });
 
 document.getElementById("timer").addEventListener("click", startTimer);
 
 function startTimer() {
-    timer.start(10);
+    timer.start(3);
 }

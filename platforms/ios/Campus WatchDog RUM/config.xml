@@ -15,11 +15,14 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
     <name>Campus WatchDog RUM</name>
     <description>
         Campus Watch Dog - Emergency Notification App Prototype
     </description>
-    <author email="bryan.santiago6@upr.edu" href="#">
+    <author email="bryan.santiago6@upr.edu">
         Bryan Santiago Rodriguez
     </author>
     <content src="index.html" />
