@@ -14,6 +14,12 @@ var mainView = myApp.addView('.view-main', {
     domCache: true
 });
 
+var userData = localforage.createInstance({
+    name: "User Data"
+});
+
+userData.clear();
+
 
 //- With callbacks on click
 $$('.forgot-ps').on('click', function () {
@@ -46,39 +52,81 @@ $$('.forgot-ps').on('click', function () {
 
 //*****SAVE USER INFO*****//
 
+$$('.sign-in').on('click', function(){
+    var formData = myApp.formToData('#login-form');
+    var username = String(formData.username);
+    var password = String(formData.password);
+    var JSONService = 'http://beta.json-generator.com/api/json/get/4yQynybmQ';
+    var found = false;
 
-//$("#directory-btn").click(function(){
-//    var JSONService = 'http://beta.json-generator.com/api/json/get/EJz5aVtQM';
-//
-//    contactData.length().then(function(length){
-//      if (length === 0) {
-//        $.getJSON(JSONService, function(data) {
-//          alert("Contact Information Recieved");
-//        })
-//
-//        .done(function( data ) {
-//          $.each( data.contacts, function( i, item ) {
-//            contactData.setItem(item.name, item.phone);
-//          });
-//        });
-//      }else{
-//        alert("Data Fetched");
-//      }
-//    });
-//
-//  });
+    myApp.showPreloader("Signing in");
+
+    userData.length().then(function(value){
+        console.log(value);
+    });
+
+
+    userData.length().then(function(length){
+        if (length === 0) {
+            $.getJSON(JSONService, function(data) {
+                console.log("Contact Information Recieved");
+            }).done(function(data) {
+                $.each( data.students, function( i, item ) {
+                    if(username == String(item.user) && password == String(item.pw)){
+                        userData.setItem(username, String(item.u_id)).then(function (value) {
+                            found = true;
+                            console.log("Succes--" + found);
+                            console.log(username + " saved with unique id: " + String(item.u_id));
+
+                        }).catch(function(err) {
+                            // This code runs if there were any errors
+                            console.log("Error-- save userinfo");
+                        });
+                    }
+                });
+
+            });
+        }else{
+            $.getJSON(JSONService, function(data) {
+                console.log("Contact Information Recieved");
+            }).done(function(data) {
+
+                $.each( data.students, function( i, item ) {
+                    if(username == String(item.user) && password == String(item.pw)){
+                        found = true;
+                    }
+                });
+
+            });
+        }
+
+        setTimeout(function () {
+            myApp.hidePreloader();
+            if(found){
+                myApp.closeModal();
+            }else{
+                myApp.alert("E-mail or password incorrect. Try Again!");
+
+            }
+        }, 2000);
+
+
+
+    });
+}); 
+
 
 var timer = new Timer({
     tick : 1,
     ontick : function (sec) {
         console.log('interval', Math.ceil(sec/1000));
         $(".timer_text").html(Math.ceil(sec/1000));
-        
+
     },
     onstart : function() {
         console.log('timer started');
         $(".timer_text").html("10");
-    
+
 
     }
 });
