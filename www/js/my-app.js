@@ -18,6 +18,10 @@ var userData = localforage.createInstance({
     name: "User Data"
 });
 
+var gps = localforage.createInstance({
+    name: "GPS Coordinates"
+});
+
 userData.clear();
 
 
@@ -48,6 +52,27 @@ $$('.forgot-ps').on('click', function () {
     myApp.actions(buttons);
 }); 
 
+//$$('.submit-btn').on('click', function(){
+//    console.log("submit btn pressed");
+//    var formData = myApp.formToData('#login-form');
+//    var username = String(formData.username);
+//    var password = String(formData.password);
+//    
+//    var dataString = 'id='+ username + '&type=' + password;
+//    console.log("submit process...");
+//    $.ajax({
+//        url     : $(this).attr('http://appsvr.uprm.edu/bryan/connect.php'),
+//        type    : $(this).attr('POST'),
+//        data    : dataString,
+//        success : function( response ) {
+//            console.log(response);
+//        }
+//    });
+//
+//
+//
+//});
+
 
 
 //*****SAVE USER INFO*****//
@@ -60,10 +85,6 @@ $$('.sign-in').on('click', function(){
     var found = false;
 
     myApp.showPreloader("Signing in");
-
-    userData.length().then(function(value){
-        console.log(value);
-    });
 
 
     userData.length().then(function(length){
@@ -115,6 +136,30 @@ $$('.sign-in').on('click', function(){
     });
 }); 
 
+function getPosition() {
+
+    var options = {
+        enableHighAccuracy: true,
+        maximumAge: 3600000
+    }
+
+    var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+
+    function onSuccess(position) {
+
+        //Use the data previously saved to show a web alert
+        myApp.alert('Latitude: ' + position.coords.latitude + " Longitude: " + position.coords.longitude, "Your Location:");
+
+        
+
+
+
+    };
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+    }
+}
+
 
 var timer = new Timer({
     tick : 1,
@@ -125,7 +170,8 @@ var timer = new Timer({
     },
     onstart : function() {
         console.log('timer started');
-        $(".timer_text").html("10");
+        $(".timer_text").html("3");
+        
 
 
     }
@@ -133,13 +179,15 @@ var timer = new Timer({
 
 // defining options using on
 timer.on('end', function () {
+    
     console.log('timer ended');
-    $(".timer_text").html("END");
+    $(".timer_text").html("SENT");
+    getPosition();
 
 });
 
 document.getElementById("timer").addEventListener("click", startTimer);
 
 function startTimer() {
-    timer.start(10);
+    timer.start(3);
 }

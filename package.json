@@ -8,12 +8,17 @@
             "ios"
         ],
         "plugins": {
-            "cordova-plugin-whitelist": {}
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-geolocation": {
+                "GEOLOCATION_USAGE_DESCRIPTION": " "
+            }
         }
     },
     "dependencies": {
         "cordova-android": "^6.2.3",
         "cordova-ios": "^4.4.0",
+        "cordova-plugin-compat": "^1.1.0",
+        "cordova-plugin-geolocation": "^2.4.3",
         "cordova-plugin-whitelist": "1"
     }
 }
