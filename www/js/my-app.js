@@ -147,12 +147,8 @@ function getPosition() {
 
     function onSuccess(position) {
 
-        //Store Latitude and Longitude coordinates from position in localForage instance gps previously created
-        gps.setItem("latitude", position.coords.latitude);
-        gps.setItem("longitude", position.coords.longitude);
-
         //Use the data previously saved to show a web alert
-        myApp.alert('Latitude: ' + gps.getItem("latitude") + " Longitude: " + gps.getItem("longitude"), "Your Location:");
+        myApp.alert('Latitude: ' + position.coords.latitude + " Longitude: " + position.coords.longitude, "Your Location:");
 
         
 
