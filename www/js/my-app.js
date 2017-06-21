@@ -48,6 +48,27 @@ $$('.forgot-ps').on('click', function () {
     myApp.actions(buttons);
 }); 
 
+//$$('.submit-btn').on('click', function(){
+//    console.log("submit btn pressed");
+//    var formData = myApp.formToData('#login-form');
+//    var username = String(formData.username);
+//    var password = String(formData.password);
+//    
+//    var dataString = 'id='+ username + '&type=' + password;
+//    console.log("submit process...");
+//    $.ajax({
+//        url     : $(this).attr('http://appsvr.uprm.edu/bryan/connect.php'),
+//        type    : $(this).attr('POST'),
+//        data    : dataString,
+//        success : function( response ) {
+//            console.log(response);
+//        }
+//    });
+//
+//
+//
+//});
+
 
 
 //*****SAVE USER INFO*****//
@@ -60,10 +81,6 @@ $$('.sign-in').on('click', function(){
     var found = false;
 
     myApp.showPreloader("Signing in");
-
-    userData.length().then(function(value){
-        console.log(value);
-    });
 
 
     userData.length().then(function(length){
