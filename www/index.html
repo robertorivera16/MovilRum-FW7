@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="css/framework7-icons.css">
         <link rel="stylesheet" href="css/my-app.css">
-        <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Graduate|Montserrat" rel="stylesheet">
 
     </head>
 
@@ -55,16 +55,11 @@
                                 <ul>
                                     <li>
                                         <p class="color-white"><a href="#" class="center item-link button button-big color-white sign-in">Sign In</a></p>
-                                        
+
                                     </li>
                                     <li>
                                         <p class="color-white"><a href="#" class="center item-link button color-white forgot-ps">Forgot Password?</a></p>
                                     </li>
-                                    <li>
-                                        <p class="color-white"><a href="#" class="center item-link button color-white submit-btn">submit info test</a></p>
-                                    </li>
-
-
                                 </ul> 
                             </div>
 
@@ -73,19 +68,29 @@
                 </div>
             </div>
         </div>  
+        <div class="panel panel-left panel-reveal bg-white">
+            <div class="content-block">
+                <p>Options</p>
+                <a href="#" class="color-green sign-out"><i class="f7-icons">logout</i>
+                    <span>Sign out</span>
+                </a>
+                
+                
+            </div>
+        </div>
         <!-- Views-->
         <div class="views">
             <!-- Your main view, should have "view-main" class-->
             <div class="view view-main">
                 <!-- Top Navbar-->
-                <div class="navbar theme-green layout-dark">
+                <div class="navbar theme-green">
                     <!-- Navbar inner for Index page-->
                     <div data-page="index" class="navbar-inner">
                         <!-- We have home navbar without left link-->
                         <div class="left">
-                            <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                            <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="f7-icons">bars</i></a>
                         </div>
-                        <div class="center sliding">Campus Watch Dog</div>
+                        <div class="center sliding title color-green">Watch Dog</div>
                     </div>
 
                 </div>
@@ -93,24 +98,26 @@
                 <div class="pages navbar-through toolbar-through">
 
 
+
+
+
                     <!-- Index Page-->
-                    <div data-page="index" class="page layout-dark">
+                    <div data-page="index" class="page ">
+                        <!-- Left Panel with Reveal effect -->
+
 
                         <!-- Scrollable page content-->
                         <div class="page-content">
                             <div class="content-block">
-                                <div class="">
-                                    <!--HELP BUTTON-->
-                                    <div class="round-button center">
-                                        <div id="timer" class="round-button-circle">
-                                            <a class="vertical-center color-white">
-                                                <div>
-                                                    <div class="timer_text">Send Emergency</div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
+
+                                <!--HELP BUTTON-->
+
+                                <div id="timer" class="round-button-circle center">
+                                    <a class="color-white timer_text">Send Emergency
+                                    </a>
                                 </div>
+
+
                             </div>                              
 
                         </div>
