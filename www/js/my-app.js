@@ -1,6 +1,6 @@
 // Initialize your app
 var myApp = new Framework7({
-    animateNavBackIcon:true, modalTitle:"Watch Dog"
+    animateNavBackIcon:true, modalTitle:"Watch Dog", swipePanel: 'left'
 });
 
 // Export selectors engine
@@ -67,7 +67,7 @@ $$('.sign-in').on('click', function(){
 
     myApp.showPreloader("Signing in");
 
-    $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" } );
+    //$.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" } );
 
 
     userData.length().then(function(length){
@@ -116,12 +116,12 @@ $$('.sign-in').on('click', function(){
                     userData.setItem('allpass', true).then(function(value){
                         console.log(value);
                     });
-                    myApp.alert('Userdata saved.');
+                    
                 }, function(){
                     userData.setItem('allpass', false).then(function(value){
                         console.log(value);
                     });
-                    myApp.alert('Userdata not saved.');
+                    
                 });
 
             }else{
