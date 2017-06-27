@@ -194,10 +194,10 @@ timer.on('end', function () {
 
 document.getElementById("timer").addEventListener("click", startTimer);
 
-//$(".round-emerg-btn-circle").on("tap", function(){
-//    alert("tapped");
-//    $(this).css("background-color", "#cf2b18");
-//});
+$(".round-emerg-btn-circle").on("tap", function(){
+    alert("tapped");
+    $(this).css("background-color", "#cf2b18");
+});
 
 
 function startTimer() {
