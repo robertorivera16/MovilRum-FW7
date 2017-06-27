@@ -67,7 +67,9 @@ $$('.sign-in').on('click', function(){
 
     myApp.showPreloader("Signing in");
 
-    //$.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" } );
+    $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" }).done(function(data){
+        alert(data);
+    });
 
 
     userData.length().then(function(length){
@@ -116,12 +118,12 @@ $$('.sign-in').on('click', function(){
                     userData.setItem('allpass', true).then(function(value){
                         console.log(value);
                     });
-                    
+
                 }, function(){
                     userData.setItem('allpass', false).then(function(value){
                         console.log(value);
                     });
-                    
+
                 });
 
             }else{
@@ -150,11 +152,8 @@ function getPosition() {
 
     function onSuccess(position) {
 
-        //Use the data previously saved to show a web alert
-        myApp.alert('Latitude: ' + position.coords.latitude + " Longitude: " + position.coords.longitude, "Your Location:");
-
-
-
+        coords.lat = position.coords.latitude;
+        coords.lon = position.coords.longitude;
 
 
     };
@@ -173,8 +172,10 @@ var timer = new Timer({
 
     },
     onstart : function() {
+        $(".timer_text").css("top", "60%");
+        getPosition();
         console.log('timer started');
-        $(".timer_text").html("3");
+        $(".timer_text").html("5");
 
 
 
@@ -183,15 +184,22 @@ var timer = new Timer({
 
 // defining options using on
 timer.on('end', function () {
-
+    
     console.log('timer ended');
-    $(".timer_text").html("SENT");
-    getPosition();
+    $(".timer_text").css("top", "50%");
+    $(".timer_text").html("Send Emergency");
+    
 
 });
 
 document.getElementById("timer").addEventListener("click", startTimer);
 
+//$(".round-emerg-btn-circle").on("tap", function(){
+//    alert("tapped");
+//    $(this).css("background-color", "#cf2b18");
+//});
+
+
 function startTimer() {
-    timer.start(3);
+    timer.start(5);
 }
