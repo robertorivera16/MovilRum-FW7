@@ -25,6 +25,11 @@ userData.getItem('allpass').then(function(value){
     }
 });
 
+$(".cancel-row").hide();
+
+var lat;
+var long;
+
 
 
 
@@ -152,8 +157,10 @@ function getPosition() {
 
     function onSuccess(position) {
 
-        coords.lat = position.coords.latitude;
-        coords.lon = position.coords.longitude;
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: lat, type: long, params: "" });
+        myApp.alert("Location sent: Latitude: " + lat + " Longitude: " + long);
 
 
     };
@@ -172,8 +179,9 @@ var timer = new Timer({
 
     },
     onstart : function() {
+        $(".cancel-row").show();
         $(".timer_text").css("top", "60%");
-        getPosition();
+        
         console.log('timer started');
         $(".timer_text").html("5");
 
@@ -184,20 +192,32 @@ var timer = new Timer({
 
 // defining options using on
 timer.on('end', function () {
-    
+    getPosition();
+    $(".cancel-row").hide();
     console.log('timer ended');
     $(".timer_text").css("top", "50%");
     $(".timer_text").html("Send Emergency");
+    
     
 
 });
 
 document.getElementById("timer").addEventListener("click", startTimer);
 
-$(".round-emerg-btn-circle").on("tap", function(){
-    alert("tapped");
+$(".round-emerg-btn-circle").mousedown(function(){
+
     $(this).css("background-color", "#cf2b18");
+}).mouseup(function(){
+    $(this).css("background-color", "red");
 });
+
+$(".cancel-btn").on("click", function(){
+    $(".cancel-row").hide();
+    timer.stop();
+    $(".timer_text").css("top", "50%");
+    $(".timer_text").html("Send Emergency");
+});
+
 
 
 function startTimer() {
