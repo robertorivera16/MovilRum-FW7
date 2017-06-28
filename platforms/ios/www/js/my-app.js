@@ -31,7 +31,10 @@ var lat;
 var long;
 
 
-
+$(".sign-out").on('click', function(){
+    userData.clear();
+    
+});
 
 
 //- With callbacks on click
@@ -61,7 +64,7 @@ $$('.forgot-ps').on('click', function () {
     myApp.actions(buttons);
 }); 
 
-//*****SAVE USER INFO*****//
+
 
 $$('.sign-in').on('click', function(){
     var formData = myApp.formToData('#login-form');

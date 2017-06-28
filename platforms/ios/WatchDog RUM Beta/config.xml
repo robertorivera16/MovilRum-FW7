@@ -18,9 +18,9 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
-    <name>Campus WatchDog RUM</name>
+    <name>WatchDog RUM Beta</name>
     <description>
-        Campus Watch Dog - Emergency Notification App Prototype
+        WatchDog RUM Beta - Emergency Notification App Prototype
     </description>
     <author email="bryan.santiago6@upr.edu">
         Bryan Santiago Rodriguez
