@@ -25,6 +25,11 @@ userData.getItem('allpass').then(function(value){
     }
 });
 
+$(".cancel-row").hide();
+
+var lat;
+var long;
+
 
 
 
@@ -67,7 +72,9 @@ $$('.sign-in').on('click', function(){
 
     myApp.showPreloader("Signing in");
 
-    //$.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" } );
+    $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" }).done(function(data){
+        alert(data);
+    });
 
 
     userData.length().then(function(length){
@@ -116,12 +123,12 @@ $$('.sign-in').on('click', function(){
                     userData.setItem('allpass', true).then(function(value){
                         console.log(value);
                     });
-                    
+
                 }, function(){
                     userData.setItem('allpass', false).then(function(value){
                         console.log(value);
                     });
-                    
+
                 });
 
             }else{
@@ -150,11 +157,10 @@ function getPosition() {
 
     function onSuccess(position) {
 
-        //Use the data previously saved to show a web alert
-        myApp.alert('Latitude: ' + position.coords.latitude + " Longitude: " + position.coords.longitude, "Your Location:");
-
-
-
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: lat, type: long, params: "" });
+        myApp.alert("Location sent: Latitude: " + lat + " Longitude: " + long);
 
 
     };
@@ -173,8 +179,11 @@ var timer = new Timer({
 
     },
     onstart : function() {
+        $(".cancel-row").show();
+        $(".timer_text").css("top", "60%");
+        
         console.log('timer started');
-        $(".timer_text").html("3");
+        $(".timer_text").html("5");
 
 
 
@@ -183,15 +192,34 @@ var timer = new Timer({
 
 // defining options using on
 timer.on('end', function () {
-
-    console.log('timer ended');
-    $(".timer_text").html("SENT");
     getPosition();
+    $(".cancel-row").hide();
+    console.log('timer ended');
+    $(".timer_text").css("top", "50%");
+    $(".timer_text").html("Send Emergency");
+    
+    
 
 });
 
 document.getElementById("timer").addEventListener("click", startTimer);
 
+$(".round-emerg-btn-circle").mousedown(function(){
+
+    $(this).css("background-color", "#cf2b18");
+}).mouseup(function(){
+    $(this).css("background-color", "red");
+});
+
+$(".cancel-btn").on("click", function(){
+    $(".cancel-row").hide();
+    timer.stop();
+    $(".timer_text").css("top", "50%");
+    $(".timer_text").html("Send Emergency");
+});
+
+
+
 function startTimer() {
-    timer.start(3);
+    timer.start(5);
 }
