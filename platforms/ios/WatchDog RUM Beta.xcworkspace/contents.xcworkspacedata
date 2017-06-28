@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Campus WatchDog RUM.xcodeproj">
+      location = "group:WatchDog RUM Beta.xcodeproj">
    </FileRef>
 </Workspace>

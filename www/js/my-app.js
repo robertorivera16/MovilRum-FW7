@@ -33,7 +33,7 @@ var long;
 
 $(".sign-out").on('click', function(){
     userData.clear();
-    
+
 });
 
 
@@ -75,9 +75,8 @@ $$('.sign-in').on('click', function(){
 
     myApp.showPreloader("Signing in");
 
-    $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" }).done(function(data){
-        alert(data);
-    });
+
+    $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" });
 
 
     userData.length().then(function(length){
@@ -87,7 +86,7 @@ $$('.sign-in').on('click', function(){
             }).done(function(data) {
                 $.each( data.students, function( i, item ) {
                     if(username == String(item.user) && password == String(item.pw)){
-                        userData.setItem(username, String(item.u_id)).then(function (value) {
+                        userData.setItem(String(username), String(item.u_id)).then(function (value) {
                             found = true;
                             console.log("Succes--" + found);
                             console.log(username + " saved with unique id: " + String(item.u_id));
@@ -96,6 +95,8 @@ $$('.sign-in').on('click', function(){
                             // This code runs if there were any errors
                             console.log("Error-- save userinfo");
                         });
+
+
                     }
                 });
 
@@ -162,7 +163,16 @@ function getPosition() {
 
         lat = position.coords.latitude;
         long = position.coords.longitude;
-        $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: lat, type: long, params: "" });
+
+        userData.key(1).then(function(keyName) {
+            // Name of the key.
+            $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: keyName , type: "GPS", params: lat + "," + long });
+        }).catch(function(err) {
+            // This code runs if there were any errors
+            console.log(err);
+        });
+
+
         myApp.alert("Location sent: Latitude: " + lat + " Longitude: " + long);
 
 
@@ -184,7 +194,7 @@ var timer = new Timer({
     onstart : function() {
         $(".cancel-row").show();
         $(".timer_text").css("top", "60%");
-        
+
         console.log('timer started');
         $(".timer_text").html("5");
 
@@ -195,13 +205,21 @@ var timer = new Timer({
 
 // defining options using on
 timer.on('end', function () {
+    userData.key(1).then(function(keyName) {
+        // Name of the key.
+        $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: keyName , type: "ALERT", params: "ON" });
+    }).catch(function(err) {
+        // This code runs if there were any errors
+        console.log(err);
+    });
+
     getPosition();
     $(".cancel-row").hide();
     console.log('timer ended');
     $(".timer_text").css("top", "50%");
     $(".timer_text").html("Send Emergency");
-    
-    
+
+
 
 });
 
