@@ -9,17 +9,19 @@
         <!-- Path to Framework7 Library CSS-->
         <link rel="stylesheet" href="css/framework7.ios.min.css">
         <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
-        <!-- Path to your custom app styles-->
-
         <link rel="stylesheet" href="css/framework7-icons.css">
+
+        <!-- Path to your custom app styles-->
         <link rel="stylesheet" href="css/my-app.css">
+        <!--Path to custom added fonts from Google Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Graduate|Montserrat" rel="stylesheet">
 
     </head>
 
     <body>
 
-        <!-- Should be a direct child of BODY -->
+        <!--=========== BEGIN LOGIN SCREEN ==========-->
+
         <div class="login-screen modal-in">
             <!-- Default view-page layout -->
             <div class="view">
@@ -69,7 +71,11 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div> 
+        <!--=========== END LOGIN SCREEN ==========-->
+
+        <!--=========== BEGIN LEFT PANEL OPTIONS ==========-->
+
         <div class="panel panel-left panel-reveal bg-white">
             <div class="content-block">
                 <p>Options</p>
@@ -80,9 +86,13 @@
 
             </div>
         </div>
+        <!--=========== END LEFT PANEL OPTIONS ==========-->
+
+        <!--=========== BEGIN MAIN PAGE ==========-->
+
         <!-- Views-->
         <div class="views">
-            <!-- Your main view, should have "view-main" class-->
+            <!-- Your main view-->
             <div class="view view-main">
                 <!-- Top Navbar-->
                 <div class="navbar theme-green">
@@ -99,11 +109,7 @@
                 <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
                 <div class="pages navbar-through toolbar-through">
 
-
-
-
-
-                    <!-- Index Page-->
+                    <!-- Index Page or Main Page-->
                     <div data-page="index" class="page ">
                         <!-- Left Panel with Reveal effect -->
 
@@ -111,8 +117,7 @@
                         <!-- Scrollable page content-->
                         <div class="page-content">
                             <div class="content-block">
-
-                                <!--HELP BUTTON-->
+                                <!--EMERGENCY BUTTON-->
                                 <div class="row">
                                     <div class="col-auto">
                                         <div id="timer" class="round-emerg-btn-circle center">
@@ -122,19 +127,16 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="row cancel-row">
 
+                                <div class="row cancel-row">
                                     <div class="col-auto">
+                                        <!--Cancel Button-->
                                         <div class="cancel-btn-container center">
                                             <a href="#" class="button button-big button-round cancel-btn">Cancel </a>
                                         </div>
                                     </div>
 
-
                                 </div>
-
-
-
 
                             </div>                              
 
@@ -144,19 +146,20 @@
                 </div>
             </div>
         </div>
+        <!--=========== END MAIN PAGE ==========-->
 
         <!--JQuery & JQuery Mobile Scripts-->
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
+        <!--LocalForage JS-->
         <script src="js/localForage.min.js"></script>
 
         <!-- Path to Framework7 Library JS-->
         <script type="text/javascript" src="js/framework7.min.js"></script>
-        <!-- Path to your timer js-->
+        <!-- Path to your timerJS-->
         <script type="text/javascript" src="js/timer.js"></script>
-        <!-- Path to your app js-->
+        <!-- Path to your app/custom js-->
         <script type="text/javascript" src="js/my-app.js"></script>
 
     </body>
