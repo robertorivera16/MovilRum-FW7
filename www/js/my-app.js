@@ -14,34 +14,42 @@ var mainView = myApp.addView('.view-main', {
     domCache: true
 });
 
+//--Create Instance of LocalForage to store user information
 var userData = localforage.createInstance({
     name: "User Data"
 });
 
+
+//--Verify if user has chosen to be signed in forever
+//--BEGIN Signed In Automatically Option--//
 userData.getItem('allpass').then(function(value){
     console.log(value)
     if(value){
         myApp.closeModal();
     }
 });
+//--END Signed In Automatically Option--//
 
+//Hides the cancel button on start
 $(".cancel-row").hide();
 
+//Declare latitude and longitude variables
 var lat;
 var long;
 
 
+//--Sign Out Click--//
 $(".sign-out").on('click', function(){
     userData.clear();
 
 });
 
 
-//- With callbacks on click
+//--BEGIN Forgot Password Click Execution--//
 $$('.forgot-ps').on('click', function () {
     var buttons = [
 
-        //Call Button
+
         {
             text:'Visite nuestro help desk en Monzon 107 o llame nuestra línea de ayuda al 787-832-4040 ext 3331.',
             label:true
@@ -63,22 +71,36 @@ $$('.forgot-ps').on('click', function () {
     ];
     myApp.actions(buttons);
 }); 
+//--END Forgot Password Click Execution--//
 
 
 
+//--**BEGIN Sign in Execution**--//
 $$('.sign-in').on('click', function(){
+    //Get FORM data, username and password fields
     var formData = myApp.formToData('#login-form');
     var username = String(formData.username);
     var password = String(formData.password);
+    //Custom JSON service
     var JSONService = 'http://beta.json-generator.com/api/json/get/Vkilrnmm7';
+    //Control boolean variable to determine if the username and password is a match
     var found = false;
 
+    //--Start of the preloader modal
     myApp.showPreloader("Signing in");
 
-
+    //--Sends to server the login intention 
     $.post( "http://appsvr.uprm.edu/watchdog/connect.php", { rid: username, type: password, params: "" });
 
+    //--BEGIN Verification Process--//
+    /*
+    IF (userData is empty), THEN
+        Get JSON data and verify each student in JSON with username & password previously stored in the variables. If there is a match  it saves the username and unique ID in userData instance, and sets found to TRUE. 
+    ELSE
+        Get JSON data and verify each student in JSON with usename & password. If there is a match, it doesn't save the data in userData instance since it is already there. It sets found to TRUE. 
 
+
+    */
     userData.length().then(function(length){
         if (length === 0) {
             $.getJSON(JSONService, function(data) {
@@ -115,20 +137,28 @@ $$('.sign-in').on('click', function(){
             });
         }
 
+        /*Waits 2 seconds for the JSON server<>client communication THEN
+            It closes the login screen IF(found is TRUE). 
+        */
+
+
         setTimeout(function () {
             myApp.hidePreloader();
             if(found){
                 myApp.closeModal('.login-screen');
 
 
-                //Keep me signed in QUESTION***
+                //--Keep me signed in QUESTION
                 //
                 myApp.confirm('Are you sure?', 'Keep me signed in...', function () {
+                    //Saves key-'allpass' with value-'true'
+
                     userData.setItem('allpass', true).then(function(value){
                         console.log(value);
                     });
 
                 }, function(){
+                    //Saves key-'allpass' with value-'false'
                     userData.setItem('allpass', false).then(function(value){
                         console.log(value);
                     });
@@ -146,6 +176,7 @@ $$('.sign-in').on('click', function(){
 
 
     });
+    //--ENDS Verification Process--//
 }); 
 
 //Get device location coordinates**
